@@ -1,0 +1,51 @@
+%% This is a simple erl_ipcam config example
+%% Configuration is an erlang format
+%% Those are explanation of configuration parameters values
+%% host - ip camera host
+%% port - ip camera port (usually 80)
+%% uri  - ip camera mjpeg stream uri
+%% degug - if enabled prints out frame comparing data in realtime (usually used to tune up configuration)
+%% frames - number of frames to capture before doing comparing
+%% skip_frams - number of frames to skip in captured frames sequence
+%% buffer - number of frames there are always kept in buffer this buffer is emptied when alert is issued 
+%% alert - number of seconds in alert mode that camera records captured frames
+%% motion - number of % of pixel change ratio to overall pixels on screen
+%% step - step is as step used to skip pixel comparing (1 - no skipping, 2 - skip each second frame, 3 - out of 3 pixels compare only 1 and etc)
+%% min - pixel change threshold of summed R,G,B that is considered a motion checked between two frames
+%% processes - number of processes that are simultaneously checking an image for pixel change e.g. motion
+%% path - path to save alerted captured frames into (time directory is appended automaticly)
+%% command - command to execute after alert is finished (${path} is replaced with the directory path that frames are saved to) - this is usually jpeg to avi or ogv encoding command 
+[
+{cam1,
+	{host,"cam1"},
+	{port,80}, 
+	{uri,"/video.cgi?"}, 
+	{debug,true},
+	{frames,3},
+	{skip_frames,1},
+	{buffer,50},
+	{alert,30},
+	{motion,5},
+	{step,2},
+	{min,30},
+	{processes,2},
+	{path,"/export/home/troydm/video/cam1"},
+	{command,"echo ${path}"}
+},
+{cam2,
+ 	{host,"cam2"},
+ 	{port,80},
+ 	{uri,"/video.cgi?"},
+	{debug,true},
+	{frames,3},
+ 	{skip_frames,1},
+ 	{buffer,50},
+ 	{alert,30},
+ 	{motion,5},
+ 	{step,2},
+ 	{min,30},
+ 	{processes,2},
+ 	{path,"/export/home/troydm/video/cam2"},
+ 	{command,"echo ${path}"}
+}
+].
