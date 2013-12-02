@@ -1,4 +1,4 @@
-erl_ipcam
+erl_ipcam v0.1
 ================
 
 ipcam motion detection and mjpeg data gathering software written in Erlang
